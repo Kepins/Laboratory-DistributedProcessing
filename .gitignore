@@ -1,0 +1,13 @@
+# Visual Studio
+.vs/
+x86/
+x64/
+Debug/
+
+# InteliJ Idea
+.idea/
+out/
+*.iml
+
+# Zip
+*.zip
