@@ -1,3 +1,9 @@
+# C++ compilation
+*.out
+*.o
+*.so
+*.a
+
 # Visual Studio
 .vs/
 x86/
@@ -9,5 +15,6 @@ Debug/
 out/
 *.iml
 
-# Zip
+# Archives
 *.zip
+*.tar

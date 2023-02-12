@@ -6,11 +6,10 @@
 #include <chrono>
 #include <iomanip>
 #include <list>
-#include <iostream>
-#include <pthread.h>
+#include <stdio.h>
+#include <sys/types.h>
 #include <unistd.h>
-#include <sys/syscall.h>
-
+#include <vector>
 
 namespace fs = std::filesystem;
 
@@ -20,16 +19,24 @@ class Finfo {
 public:
 	bool folder;
 	std::string name;
-	__int64_t length;
+	int64_t length;
 	std::time_t mod_time;
 	Folder* parent = nullptr;
 	friend std::ostream& operator<<(std::ostream& out, Finfo* filePtr) ;
+
+	std::string serialize();
+	Finfo();
+	Finfo(std::string& stringSerialization, Folder* parent = nullptr);
 	virtual ~Finfo();
 };
 
 class Folder : public Finfo {
 public:
 	std::list<Finfo*> children;
+
+	std::string serialize();
+	Folder();
+	Folder(std::string& stringSerialization, Folder* parent = nullptr);
 	~Folder();
 };
 
